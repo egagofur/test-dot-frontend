@@ -1,11 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Footer from "./components/Footer/Footer";
-import Header from "./components/Header/Header";
-import Home from "./pages/Home/Home";
-import Quiz from "./pages/Quiz/Quiz";
-import Result from "./pages/Result/Result";
-import { useState } from "react";
-import axios from "axios";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
+import Home from './pages/Home/Home';
+import Quiz from './pages/Quiz/Quiz';
+import Result from './pages/Result/Result';
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function App() {
   const [questions, setQuestions] = useState();
@@ -14,7 +14,7 @@ export default function App() {
   const [inccorect, setInccorect] = useState(0);
   const [totalAnswers, setTotalAnswers] = useState(0);
 
-  const fetchQuestions = async (category = "", difficulty = "") => {
+  const fetchQuestions = async (category = '', difficulty = '') => {
     const { data } = await axios.get(
       `https://opentdb.com/api.php?amount=10${
         category && `&category=${category}`

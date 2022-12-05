@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import indicator from "../../assets/indicator.svg";
-import Question from "../../components/Question/Question";
-import CircularProgress from "@mui/material/CircularProgress";
-import { useTimer } from "react-timer-hook";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import indicator from '../../assets/indicator.svg';
+import Question from '../../components/Question/Question';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useTimer } from 'react-timer-hook';
+import { useNavigate } from 'react-router-dom';
 
 const Quiz = ({
   name,
@@ -38,8 +38,8 @@ const Quiz = ({
   };
 
   const handleTimer = () => {
-    alert("Your time is up");
-    navigate("/result");
+    alert('Your time is up');
+    navigate('/result');
   };
 
   const time = new Date();

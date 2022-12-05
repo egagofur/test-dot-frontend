@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Button from "../Button/Button";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import Button from '../Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Question = ({
   currQues,
@@ -30,17 +30,17 @@ const Question = ({
       setCurrQues(nextQuest);
       setSelected();
     } else if (nextQuest > 8) {
-      navigate("/result");
+      navigate('/result');
     }
   };
 
   const handleQuit = () => {
     setCurrQues(0);
     setQuestions();
-    navigate("/");
+    navigate('/');
   };
 
-  let result = currQues > 20 ? "Submit" : "Next";
+  let result = currQues > 20 ? 'Submit' : 'Next';
   return (
     <div className="w-full lg:w-2/6 px-6 gap-12 flex flex-col">
       <div className="space-y-4">
@@ -67,7 +67,7 @@ const Question = ({
         </div>
       </div>
       <div className="space-y-2">
-        <Button value={"Quit"} handleQuit={handleQuit} quitz={"bg-rose-600"} />
+        <Button value={'Quit'} handleQuit={handleQuit} quitz={'bg-rose-600'} />
       </div>
     </div>
   );
