@@ -37,7 +37,7 @@ const Question = ({
   const handleQuit = () => {
     setCurrQues(0);
     setQuestions();
-    navigate('/');
+    navigate('/home');
   };
 
   let result = currQues > 20 ? 'Submit' : 'Next';

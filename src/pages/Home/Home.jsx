@@ -1,33 +1,51 @@
-import indicator from "../../assets/indicator.svg";
-import Button from "../../components/Button/Button";
-import { TextField, MenuItem } from "@mui/material";
-import Categories from "../../Data/Categories.js";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import Search from "../../components/Search/Search";
+import indicator from '../../assets/indicator.svg';
+import Button from '../../components/Button/Button';
+import { TextField, MenuItem } from '@mui/material';
+import Categories from '../../Data/Categories.js';
+import { useState, useEffect } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
+import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import Search from '../../components/Search/Search';
+import { auth, db, logout } from '../../config/firebase';
+import { query, collection, getDocs, where } from 'firebase/firestore';
 
-const Home = ({ name, setName, fetchQuestions }) => {
-  const [category, setCategory] = useState("");
-  const [difficulty, setDifficulty] = useState("");
+const Home = ({ nameUser, setNameUser, fetchQuestions }) => {
+  const [category, setCategory] = useState('');
+  const [difficulty, setDifficulty] = useState('');
   const [error, setError] = useState(false);
 
-  let navigate = useNavigate();
+  const [user, loading] = useAuthState(auth);
+  const [name, setName] = useState('');
+  const navigate = useNavigate();
+
+  //   const fetchData = async () => {
+  //     db = firebase.firestore();
+  //     const data = await db.collection('spell').get();
+  //     result = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+  //     this.setState({ spell: result });
+  //   };
+  useEffect(() => {
+    if (loading) return;
+    if (!user) return navigate('/login');
+    // fetchData();
+  }, [user, loading]);
 
   const handleSubmit = () => {
-    if (!name || !category || !difficulty) {
+    if (!nameUser || !category || !difficulty) {
       setError(true);
       return;
     } else {
       setError(false);
       fetchQuestions(category, difficulty);
-      navigate("/quiz");
+      navigate('/quiz');
     }
   };
+
   return (
     <div className="relative h-screen flex-col space-y-8 top-24">
       <div className="px-6 space-y-2 flex flex-col">
-        <h3 className="text-white text-sm font-dm">Hello, Ega</h3>
+        <h3 className="text-white text-sm font-dm">Hello, </h3>
         <h2 className="font-bold text-white text-xl font-ubuntu">
           Let's test your knowledge
         </h2>
@@ -42,7 +60,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
             label="Your Name"
             variant="outlined"
             style={{ width: 300 }}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setNameUser(e.target.value)}
           />
           <TextField
             select
@@ -57,6 +75,7 @@ const Home = ({ name, setName, fetchQuestions }) => {
               </MenuItem>
             ))}
           </TextField>
+
           <TextField
             select
             label="Mode"
@@ -74,11 +93,19 @@ const Home = ({ name, setName, fetchQuestions }) => {
               Hard
             </MenuItem>
           </TextField>
-          <Button
-            handleSubmit={handleSubmit}
-            value={"Start Quiz"}
-            next={"bg-gradient-to-tl from-secondery to-primary"}
-          />
+          <div className="flex flex-col space-y-4">
+            <Button
+              handleSubmit={handleSubmit}
+              value={'Start Quiz'}
+              next={'bg-gradient-to-tl from-secondery to-primary'}
+            />
+            <button
+              className="w-full h-11 text-white bg-rose-600 font-ubuntu font-bold rounded-md flex items-center justify-center"
+              onClick={() => logout()}
+            >
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </div>

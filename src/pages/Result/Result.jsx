@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import Button from '../../components/Button/Button';
 
-const Result = ({ name, score, inccorect, totalAnswers }) => {
+const Result = ({ nameUser, score, inccorect, totalAnswers }) => {
   useEffect(() => {
-    if (!name) {
-      window.location.href = '/';
+    if (!nameUser) {
+      window.location.href = '/home';
     }
-  }, [name]);
+  }, [nameUser]);
 
   const handleQuit = () => {
-    window.location.href = '/';
+    window.location.href = '/home';
   };
 
   return (

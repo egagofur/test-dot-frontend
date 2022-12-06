@@ -6,7 +6,7 @@ import { useTimer } from 'react-timer-hook';
 import { useNavigate } from 'react-router-dom';
 
 const Quiz = ({
-  name,
+  nameUser,
   score,
   questions,
   setQuestions,
@@ -52,7 +52,7 @@ const Quiz = ({
     <div className="relative  h-screen flex-col space-y-8 top-24">
       <span className="text-white font-Nunito font-semibold px-6 flex justify-between items-center">
         <div className="flex-col">
-          <p className="text-xl font-medium">Hello, {name}</p>
+          <p className="text-xl font-medium">Hello, {nameUser}</p>
           <p className="text-md font-medium">
             time: {hours} : {minutes} : {seconds}
           </p>
