@@ -1,5 +1,7 @@
 import { useEffect } from 'react';
+
 import Button from '../../components/Button/Button';
+import { useNavigate } from 'react-router-dom';
 
 const Result = ({ nameUser, score, inccorect, totalAnswers }) => {
   useEffect(() => {
@@ -7,9 +9,8 @@ const Result = ({ nameUser, score, inccorect, totalAnswers }) => {
       window.location.href = '/home';
     }
   }, [nameUser]);
-
   const handleQuit = () => {
-    window.location.href = '/home';
+    window.location.href = '/';
   };
 
   return (
