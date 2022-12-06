@@ -45,7 +45,7 @@ const Home = ({ nameUser, setNameUser, fetchQuestions }) => {
   return (
     <div className="relative h-screen flex-col space-y-8 top-24">
       <div className="px-6 space-y-2 flex flex-col">
-        <h3 className="text-white text-sm font-dm">Hello, </h3>
+        <h3 className="text-white text-sm font-dm">Hello, Wellcome</h3>
         <h2 className="font-bold text-white text-xl font-ubuntu">
           Let's test your knowledge
         </h2>
