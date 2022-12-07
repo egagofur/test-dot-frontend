@@ -27,8 +27,8 @@ const Regsiter = () => {
       });
   };
   useEffect(() => {
-    if (loading) navigate('/register');
-    if (user) navigate('/home');
+    if (loading) return;
+    if (user) return navigate('/home');
   }, [user, loading]);
   return (
     <div className="relative h-screen flex-col space-y-8 top-24">

@@ -20,7 +20,6 @@ const Home = ({ nameUser, setNameUser, fetchQuestions }) => {
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate('/login');
-    // fetchData();
   }, [user, loading]);
 
   const handleSubmit = () => {

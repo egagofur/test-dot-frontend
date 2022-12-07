@@ -10,10 +10,11 @@ import { auth, sendPasswordReset } from '../../config/firebase';
 const Reset = () => {
   const [email, setEmail] = useState('');
   const [user, loading, error] = useAuthState(auth);
+
   const navigate = useNavigate();
   useEffect(() => {
-    if (loading) return navigate('/reset');
-    if (user) navigate('/home');
+    if (loading) return;
+    if (user) return navigate('/home');
   }, [user, loading]);
   return (
     <div className="relative h-screen flex-col space-y-8 top-24">
