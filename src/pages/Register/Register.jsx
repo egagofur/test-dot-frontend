@@ -21,14 +21,13 @@ const Regsiter = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         setError(true);
       });
   };
   useEffect(() => {
-    if (loading) return;
+    if (loading) navigate('/register');
     if (user) navigate('/home');
   }, [user, loading]);
   return (

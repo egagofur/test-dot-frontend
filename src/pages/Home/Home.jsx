@@ -7,8 +7,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import Search from '../../components/Search/Search';
-import { auth, db, logout } from '../../config/firebase';
-import { query, collection, getDocs, where } from 'firebase/firestore';
+import { auth, logout } from '../../config/firebase';
 
 const Home = ({ nameUser, setNameUser, fetchQuestions }) => {
   const [category, setCategory] = useState('');
@@ -16,15 +15,8 @@ const Home = ({ nameUser, setNameUser, fetchQuestions }) => {
   const [error, setError] = useState(false);
 
   const [user, loading] = useAuthState(auth);
-  const [name, setName] = useState('');
   const navigate = useNavigate();
 
-  //   const fetchData = async () => {
-  //     db = firebase.firestore();
-  //     const data = await db.collection('spell').get();
-  //     result = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-  //     this.setState({ spell: result });
-  //   };
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate('/login');

@@ -20,9 +20,7 @@ const Login = () => {
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         setError(true);
@@ -30,7 +28,7 @@ const Login = () => {
   };
   useEffect(() => {
     if (loading) {
-      return;
+      navigate('/login');
     }
     if (user) navigate('/home');
   }, [user, loading]);
@@ -78,7 +76,7 @@ const Login = () => {
             <img src={iconGoogle}></img>
           </button>
           {error && (
-            <span className="text-center text-red-600">Wrong password!!!</span>
+            <p className="text-center text-red-600 ">Wrong password!!!</p>
           )}
           <div className="flex justify-end">
             <Link to="/reset" className="hover:underline">

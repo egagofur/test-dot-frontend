@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
@@ -73,7 +72,6 @@ export default function App() {
             }
           />
         </Routes>
-        <Footer />
       </div>
     </BrowserRouter>
   );

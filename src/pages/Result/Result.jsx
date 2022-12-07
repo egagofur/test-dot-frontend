@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
-
 import Button from '../../components/Button/Button';
-import { useNavigate } from 'react-router-dom';
 
 const Result = ({ nameUser, score, inccorect, totalAnswers }) => {
   useEffect(() => {
