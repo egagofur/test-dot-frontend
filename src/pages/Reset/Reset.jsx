@@ -12,7 +12,7 @@ const Reset = () => {
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
   useEffect(() => {
-    if (loading) navigate('/reset');
+    if (loading) return navigate('/reset');
     if (user) navigate('/home');
   }, [user, loading]);
   return (
